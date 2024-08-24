@@ -9,24 +9,6 @@ variable "aws_profile" {
     default = "tf_user"
 }
 
-variable "read_capacity" {
-    type = number
-    description = ""
-    default = 5
-}   
-
-variable "write_capacity" {
-    type = number
-    description = ""
-    default = 5
-}   
-
-variable "deletion_protection" {
-    type = bool
-    description = ""
-    default = false
-}   
-
 variable "tags" {
   type = map(string)
   description = ""
@@ -39,6 +21,19 @@ variable "tags" {
 variable "dynamodb_field_list" {
     type = list(string)
     description = ""
-    default = [ "value" ]
+    default = [ "UserId", "GameTitle" ]
   
+}
+
+variable "database_config" {
+type = object({
+  table_name = string
+  read_capacity = optional(number, 3)
+  write_capacity = optional(number, 3)
+  deletion_protection = optional(bool, false)
+})
+  description = ""
+  default = {
+    table_name = "GameScores"
+  }
 }

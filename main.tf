@@ -11,9 +11,14 @@ resource "aws_dynamodb_table" "games" {
   deletion_protection_enabled = var.deletion_protection
 
   hash_key = "UserId"
+  range_key = "GameTitle"
 
   attribute {
     name = "UserId"
+    type = "S"
+  }
+  attribute { 
+    name = "GameTitle"
     type = "S"
   }
 }
