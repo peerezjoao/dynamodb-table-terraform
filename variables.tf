@@ -26,3 +26,19 @@ variable "deletion_protection" {
     description = ""
     default = false
 }   
+
+variable "tags" {
+  type = map(string)
+  description = ""
+  default = {
+    "Project" = "Estudos Terraform"
+    "CreatedAt" = "2024-08-23"
+  }
+}
+
+variable "dynamodb_field_list" {
+    type = list(string)
+    description = ""
+    default = [ "value" ]
+  
+}
