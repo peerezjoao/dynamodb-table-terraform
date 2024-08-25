@@ -28,3 +28,8 @@ resource "aws_dynamodb_table" "games" {
   })
 
 }
+
+resource "aws_vpc" "main" {
+  cidr_block = var.cidr_block
+}
+

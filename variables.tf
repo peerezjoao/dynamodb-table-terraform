@@ -1,6 +1,15 @@
+
+
 variable "aws_region" {
     type = string
     description = "The region to deploy the infra to"
+
+
+  validation {
+    condition = can(regex("^[a-z][a-z]-[a-z]+-[0-9]+$", var.aws_region))
+    error_message = "Only us-east-1 is allowed."
+  }
+
 }
 
 variable "aws_profile" {
@@ -52,4 +61,10 @@ type = object({
     type = "S"
   }
   }
+}
+
+variable "cidr_block" {
+  type = string
+  default = "10.0.0.0/16"
+  sensitive = true
 }
